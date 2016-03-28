@@ -128,9 +128,8 @@ Hassan  Runte          636864.8
 
 ##What were the top 3 highest grossing categories?
 
-sqlite> SELECT category, SUM(quantity), SUM(price), (SUM(quantity) * SUM(price)) FROM orders join items WHERE items.id = orders.item_id GROUP BY category ORDER by (SUM(quantity) * SUM(price)) desc LIMIT 3;
-cate  SUM(quantity)  SUM(  (SUM
-----  -------------  ----  ----
-Sports  102            73879  7535658
-Books  72             68982  4966704
-Music, Sports & Clothing  72             65655  4727160
+sqlite> SELECT category, SUM(quantity), SUM(price), SUM(quantity * price) FROM orders join items WHERE items.id = orders.item_id GROUP BY category ORDER by SUM(quantity * price) desc LIMIT 3;
+
+Music, Sports & Clothing|72|65655|525240
+Beauty, Toys & Sports|54|58268|449496
+Sports|102|73879|448410
